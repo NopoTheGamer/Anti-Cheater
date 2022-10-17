@@ -3,7 +3,6 @@ package com.example;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonPrimitive;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
@@ -15,6 +14,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import java.io.*;
 import java.net.URL;
 import java.util.concurrent.CompletableFuture;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 // https://gist.githubusercontent.com/PizzaboiBestLegit/c65896b963454b679eb68a29435ccb19/raw
@@ -25,6 +26,7 @@ public class ExampleMod {
     public final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     public JsonObject data = null;
     boolean shouldError = true;
+    private static final Pattern dungeonFinderPatter = Pattern.compile("Dungeon Finder > (.+) ");
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
@@ -42,8 +44,9 @@ public class ExampleMod {
             return;
         };
         String message = event.message.getUnformattedText();
-        if (message.contains("Dungeon Finder > ")) {
-            String ign = message.substring("Dungeon Finder > ".length()).split(" ")[0];
+        Matcher matcher = dungeonFinderPatter.matcher(message);
+        if (matcher.find()) {
+            String ign = matcher.group(1);
             if (data.has(ign)) {
                 Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("!!!!"));
                 Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§c" + ign + " is a cheater!"));
