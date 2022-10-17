@@ -1,14 +1,14 @@
 [
   {
-	"modid": "examplemod",
-	"name": "Xample Mod",
-	"description": "A mod that is used as an example.",
+	"modid": "anticheater",
+	"name": "AntiCheater",
+	"description": "Tells you if a person who joined the party via dungeon finder has a pizza name",
 	"version": "1.0.0",
 	"mcversion": "1.8.9",
-	"url": "https://github.com/romangraef/Forge1.8.9Template/",
+	"url": "https://github.com/NopoTheGamer/Anti-Cheater/",
 	"updateUrl": "",
 	"authorList": [
-	  "You"
+	  "nopo"
 	],
 	"credits": "",
 	"logoFile": "",
