@@ -38,6 +38,7 @@ public class ExampleMod {
             if (shouldError && Minecraft.getMinecraft().currentScreen == null) {
                 Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§cError fetching cheaters!"));
                 shouldError = false;
+                MinecraftForge.EVENT_BUS.unregister(this);
             }
             return;
         };
