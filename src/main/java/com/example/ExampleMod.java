@@ -55,7 +55,7 @@ public class ExampleMod {
 
     public void fetchCheaters() {
         CompletableFuture.supplyAsync(() -> {
-            try (Reader inReader = new InputStreamReader(new URL("https://gist.githubusercontent.com/PizzaboiBestLegit/c65896b963454b679eb68a29435ccb19/raw").openStream())) {
+            try (Reader inReader = new InputStreamReader(new URL("https://gist.githubusercontent.com/NopoTheGamer/43c671dcfbeaa3352d203ae53567c8aa/raw/21bf0c2c6afc33a1be4ab6bb28e54e3722964d67/a.json").openStream())) {
                 data = gson.fromJson(inReader, JsonObject.class);
             } catch (Exception e) {
                 e.printStackTrace();
